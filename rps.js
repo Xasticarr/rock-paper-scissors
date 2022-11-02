@@ -110,3 +110,28 @@ function score(playerScore, computerScore) {
         return("RPS ends in a tie");
     }
 }
+
+function game() {
+    //First I want to start with a score of 0 for player and computer
+    let playerScore = 0;
+    let computerScore = 0;
+
+    //We want to play 5 rounds of the game
+        for(let i = 0; i < 5; i++){
+            //Now we want to call the functions to play a single round of RPS
+            let playerChoice = getPlayerChoice();
+            let computerChoice = getComputerChoice();
+            let round = playRPS(playerChoice, computerChoice);
+                if (round == "Player Wins") {
+                    playerScore++;
+                } else if (round == "Computer Wins") {
+                    computerScore++;
+                }
+                //Else a tie, but since the score doesn't change we don't need it.
+
+            console.log("Player: " + playerScore);
+            console.log("Computer: " + computerScore);
+        }
+        console.log(score(playerScore, computerScore));
+}
+game();
