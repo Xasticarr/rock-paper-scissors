@@ -96,8 +96,17 @@ function playRPS (playerSelection, computerSelection) {
                 break;
             
     }
-    
 
     
 
+}
+
+function score(playerScore, computerScore) {
+    if(playerScore > computerScore) {
+        return("Player wins RPS");
+    } else if (playerScore < computerScore) {
+        return("Computer wins RPS");
+    } else {
+        return("RPS ends in a tie");
+    }
 }
