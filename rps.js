@@ -63,7 +63,40 @@ function playRPS (playerSelection, computerSelection) {
                 console.log("Player wins! Rock smashes Scissors!");
                 return("Player Wins");
             }
+                break;
+
+        case("PAPER"):
+            if (computerSelection == "ROCK") {
+                console.log("Player wins! Paper covers Rock!");
+                return("Player Wins");
+            }
+            if (computerSelection == "PAPER") {
+                console.log("Game ends in a tie.");
+                return("Tie");
+            }
+            if (computerSelection == "SCISSORS") {
+                console.log("Computer wins! Scissors cut Paper!");
+                return("Computer Wins");
+            }
+                break;
+
+        case("SCISSORS"):
+            if (computerSelection == "ROCK") {
+                console.log("Computer wins! Rock smashes Scissors");
+                return("Computer Wins");
+            }
+            if (computerSelection == "PAPER") {
+                console.log("Player wins! Scissors cut Paper!");
+                return("Player Wins");
+            }
+            if (computerSelection == "SCISSORS") {
+                console.log("Game ends in a tie.");
+                return("Tie");
+            }
+                break;
+            
     }
+    
 
     
 
