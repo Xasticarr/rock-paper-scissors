@@ -118,10 +118,12 @@ function playRPS (playerSelection, computerSelection) {
     switch(playerSelection) {
         case("Rock"):
             if (computerSelection == "ROCK") {
+                results.textContent = "Game ends in a tie.";
                 console.log("Game ends in a tie.");
                 return("Tie");
             }
             if (computerSelection == "PAPER") {
+                results.textContent = "Computer wins! Paper covers Rock!";
                 console.log("Computer wins! Paper covers Rock!");
                 computerScore++;
                 computerScoreElement.textContent = computerScore;
@@ -129,6 +131,7 @@ function playRPS (playerSelection, computerSelection) {
                 return("Computer Wins");
             }
             if (computerSelection == "SCISSORS") {
+                results.textContent = "Player wins! Rock smashes Scissors!";
                 console.log("Player wins! Rock smashes Scissors!");
                 playerScore++;
                 playerScoreElement.textContent = playerScore;
@@ -139,6 +142,7 @@ function playRPS (playerSelection, computerSelection) {
 
         case("Paper"):
             if (computerSelection == "ROCK") {
+                results.textContent = "Player wins! Paper covers Rock!";
                 console.log("Player wins! Paper covers Rock!");
                 playerScore++;
                 playerScoreElement.textContent = playerScore;
@@ -146,10 +150,12 @@ function playRPS (playerSelection, computerSelection) {
                 return("Player Wins");
             }
             if (computerSelection == "PAPER") {
+                results.textContent = "Game ends in a tie.";
                 console.log("Game ends in a tie.");
                 return("Tie");
             }
             if (computerSelection == "SCISSORS") {
+                results.textContent = "Computer wins! Scissors cut Paper!";
                 console.log("Computer wins! Scissors cut Paper!");
                 computerScore++;
                 computerScoreElement.textContent = computerScore;
@@ -160,6 +166,7 @@ function playRPS (playerSelection, computerSelection) {
 
         case("Scissors"):
             if (computerSelection == "ROCK") {
+                results.textContent = "Computer wins! Rock smashes Scissors";
                 console.log("Computer wins! Rock smashes Scissors");
                 computerScore++;
                 computerScoreElement.textContent = computerScore;
@@ -167,6 +174,7 @@ function playRPS (playerSelection, computerSelection) {
                 return("Computer Wins");
             }
             if (computerSelection == "PAPER") {
+                results.textContent = "Player wins! Scissors cut Paper!";
                 console.log("Player wins! Scissors cut Paper!");
                 playerScore++;
                 playerScoreElement.textContent = playerScore;
@@ -174,6 +182,7 @@ function playRPS (playerSelection, computerSelection) {
                 return("Player Wins");
             }
             if (computerSelection == "SCISSORS") {
+                results.textContent = "Game ends in a tie.";
                 console.log("Game ends in a tie.");
                 return("Tie");
             }
