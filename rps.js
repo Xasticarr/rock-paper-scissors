@@ -1,4 +1,86 @@
 const choices = ["Rock", "Paper", "Scissors"]; 
+const buttonRock = document.getElementById("rock");
+const buttonPaper = document.getElementById("paper");
+const buttonScissors = document.getElementById("scissors");
+const playerScoreElement = document.querySelector(".playerScore");
+const computerScoreElement = document.querySelector(".computerScore");
+const results = document.querySelector(".results");
+
+let playerScore = 0;
+let computerScore = 0;
+
+let playing = true;
+
+
+
+
+
+
+buttonRock.addEventListener("click", function() {
+    const playerChoice = (this.textContent);
+    const computerChoice = getComputerChoice();
+    playRPS(playerChoice, computerChoice);
+    console.log(playerScore, computerScore);
+    
+
+});
+buttonPaper.addEventListener("click", function(){
+    const playerChoice = (this.textContent);
+    const computerChoice = getComputerChoice();
+    playRPS(playerChoice, computerChoice);
+
+});
+buttonScissors.addEventListener("click", function(){
+    const playerChoice = (this.textContent);
+    const computerChoice = getComputerChoice();
+    playRPS(playerChoice, computerChoice);
+
+});
+
+
+
+
+
+
+
+
+
+
+function game(playerChoice, computerChoice){
+    console.log(playerChoice, computerChoice);
+};
+
+
+            //Now we want to call the functions to play a single round of RPS
+        //     let round = playRPS(playerChoice, computerChoice);
+        //         if (round == "Player Wins") {
+        //             playerScore++;
+        //         } else if (round == "Computer Wins") {
+        //             computerScore++;
+        //         }
+        //         //Else a tie, but since the score doesn't change we don't need it.
+
+        //     console.log("Player: " + playerScore);
+        //     console.log("Computer: " + computerScore);
+        // }
+        // console.log(score(playerScore, computerScore));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function getComputerChoice (choice) {
     let x = Math.random();
@@ -22,52 +104,45 @@ function getComputerChoice (choice) {
 
 //getComputerChoice("") //This is calling the function to show a console log with CPU Choice
 
-function getPlayerChoice (choice) {
+// function getPlayerChoice (choice) {
 
-let playerChoice = prompt("Please choose Rock, Paper, or Scissors.");
-let playerSelection = playerChoice.toUpperCase();
-let text2 = ("You have chosen ");
-    if (playerSelection == "ROCK") {
-        choice = ("ROCK");
-        console.log(text2 + playerSelection);
-        return("ROCK");
-    } else if (playerSelection == "PAPER") {
-        choice = ("PAPER");
-        console.log(text2 + playerSelection);
-        return("PAPER");
-    } else if (playerSelection == "SCISSORS") {
-        choice = ("SCISSORS");
-        console.log(text2 + playerSelection);
-        return("SCISSORS");
-    } else {
-         alert("Please choose Rock, Paper, or Scissors");
-    }
-}
+
 
 // getPlayerChoice()
 //This is the code I tried for Player Selection. Now I need to include it in the PLAY function.
 
 
 function playRPS (playerSelection, computerSelection) {
+
+    if(playing){
     switch(playerSelection) {
-        case("ROCK"):
+        case("Rock"):
             if (computerSelection == "ROCK") {
                 console.log("Game ends in a tie.");
                 return("Tie");
             }
             if (computerSelection == "PAPER") {
                 console.log("Computer wins! Paper covers Rock!");
+                computerScore++;
+                computerScoreElement.textContent = computerScore;
+                score(playerScore, computerScore);
                 return("Computer Wins");
             }
             if (computerSelection == "SCISSORS") {
                 console.log("Player wins! Rock smashes Scissors!");
+                playerScore++;
+                playerScoreElement.textContent = playerScore;
+                score(playerScore, computerScore);
                 return("Player Wins");
             }
                 break;
 
-        case("PAPER"):
+        case("Paper"):
             if (computerSelection == "ROCK") {
                 console.log("Player wins! Paper covers Rock!");
+                playerScore++;
+                playerScoreElement.textContent = playerScore;
+                score(playerScore, computerScore);
                 return("Player Wins");
             }
             if (computerSelection == "PAPER") {
@@ -76,17 +151,26 @@ function playRPS (playerSelection, computerSelection) {
             }
             if (computerSelection == "SCISSORS") {
                 console.log("Computer wins! Scissors cut Paper!");
+                computerScore++;
+                computerScoreElement.textContent = computerScore;
+                score(playerScore, computerScore);
                 return("Computer Wins");
             }
                 break;
 
-        case("SCISSORS"):
+        case("Scissors"):
             if (computerSelection == "ROCK") {
                 console.log("Computer wins! Rock smashes Scissors");
+                computerScore++;
+                computerScoreElement.textContent = computerScore;
+                score(playerScore, computerScore);
                 return("Computer Wins");
             }
             if (computerSelection == "PAPER") {
                 console.log("Player wins! Scissors cut Paper!");
+                playerScore++;
+                playerScoreElement.textContent = playerScore;
+                score(playerScore, computerScore);
                 return("Player Wins");
             }
             if (computerSelection == "SCISSORS") {
@@ -95,43 +179,49 @@ function playRPS (playerSelection, computerSelection) {
             }
                 break;
             
+        }
+
+
     }
 
-    
-
+    // if(playerScore >= 5 || computerScore >=5){
+    //     playerScore.textContent
+    // }
 }
 
 function score(playerScore, computerScore) {
-    if(playerScore > computerScore) {
-        return("Player wins RPS");
-    } else if (playerScore < computerScore) {
-        return("Computer wins RPS");
-    } else {
-        return("RPS ends in a tie");
-    }
+   if (playerScore >= 5){
+    results.textContent = "Player wins RPS! Refresh to play again!";
+    playing = false;
 }
 
-function game() {
-    //First I want to start with a score of 0 for player and computer
-    let playerScore = 0;
-    let computerScore = 0;
-
-    //We want to play 5 rounds of the game
-        for(let i = 0; i < 5; i++){
-            //Now we want to call the functions to play a single round of RPS
-            let playerChoice = getPlayerChoice();
-            let computerChoice = getComputerChoice();
-            let round = playRPS(playerChoice, computerChoice);
-                if (round == "Player Wins") {
-                    playerScore++;
-                } else if (round == "Computer Wins") {
-                    computerScore++;
-                }
-                //Else a tie, but since the score doesn't change we don't need it.
-
-            console.log("Player: " + playerScore);
-            console.log("Computer: " + computerScore);
-        }
-        console.log(score(playerScore, computerScore));
+   if (computerScore >=5){
+    results.textContent = "Computer wins RPS! Refresh to play again!";
+    playing = false;
+   }
 }
-game();
+
+// function game() {
+//     //First I want to start with a score of 0 for player and computer
+//     let playerScore = 0;
+//     let computerScore = 0;
+
+//     // //We no longer need 5 rounds total, so commenting out
+//          for(let i = 0; i < 5; i++){
+//             //Now we want to call the functions to play a single round of RPS
+//             let playerChoice = getPlayerChoice();
+//             let computerChoice = getComputerChoice();
+//             let round = playRPS(playerChoice, computerChoice);
+//                 if (round == "Player Wins") {
+//                     playerScore++;
+//                 } else if (round == "Computer Wins") {
+//                     computerScore++;
+//                 }
+//                 //Else a tie, but since the score doesn't change we don't need it.
+
+//             console.log("Player: " + playerScore);
+//             console.log("Computer: " + computerScore);
+//         }
+//         console.log(score(playerScore, computerScore));
+//     }
+// game();
